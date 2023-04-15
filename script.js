@@ -4,8 +4,8 @@ send_name(nome)
 
 function send_name(nome) {
     const promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nome)
-    promisse.then(reload_messages)
     promisse.catch(tratar_erro)
+    promisse.then(reload_messages)
 }
 
 function keep_conection() {
@@ -13,9 +13,8 @@ function keep_conection() {
 }
 
 function tratar_erro(erro){
-    console.log(erro)
-    alert('Algo deu errado! Favor inserir outro nome ou tente novamente mais tarde!')
     window.location.reload()
+    alert('Algo deu errado! Favor inserir outro nome ou tente novamente mais tarde!')
 }
 
 
