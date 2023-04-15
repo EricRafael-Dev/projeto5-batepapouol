@@ -22,6 +22,7 @@ function tratar_erro(erro){
 function send_message() {
     let message = document.querySelector('.text_message').value
 
+
     const send_message_here = 
     {
         from: `${nome.name}`,
@@ -37,6 +38,16 @@ function send_message() {
     
 }
 
+function press_enter() {
+    var key = window.event.keyCode;
+    if (key === 13) {
+        send_message()
+        document.querySelector('.text_message').value = ''
+    } else {
+        return
+    }
+
+}
 
 function appear_participants() {
     const menu = document.querySelector('.menu_participants')
