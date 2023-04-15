@@ -9,7 +9,8 @@ function send_name(nome) {
 }
 
 function keep_conection() {
-    axios.post('https://mock-api.driven.com.br/api/vm/uol/status', nome)
+    const reconnect_promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/status', nome)
+    reconnect_promisse.catch(tratar_erro)
 }
 
 function tratar_erro(erro){
