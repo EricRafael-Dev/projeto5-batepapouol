@@ -74,7 +74,7 @@ function load_messages(load_messages) {
             //inserir os dados se a pessoa entrou ou saiu no HTML
             all_messages.innerHTML +=`
             <div class="format_menssage somebody_enter">
-                <div class="menssage">
+                <div data-test="message" class="menssage">
                     <p class="time">${message_recived[i].time}</p>
                     <p class="name">${message_recived[i].from}</p>${message_recived[i].text}
                 </div>
@@ -86,7 +86,7 @@ function load_messages(load_messages) {
             //inserir a menssagem e quem mandou no HTML
             all_messages.innerHTML += `
             <div class="format_menssage">
-                <div class="menssage">
+                <div data-test="message" class="menssage">
                     <span class="time">${message_recived[i].time}</span>
                     <span class="name">${message_recived[i].from}</span>
                     <span class="para">para</span>
@@ -101,7 +101,7 @@ function load_messages(load_messages) {
             //inserir a menssagem privada e quem mandou no HTML
             all_messages.innerHTML += `
             <div class="format_menssage reserve">
-                <div class="menssage">
+                <div data-test="message" class="menssage">
                     <p class="time">${message_recived[i].time}</p>
                     <p class="name">${message_recived[i].from}</p>
                     <p class="para">reservadamente para</p>
