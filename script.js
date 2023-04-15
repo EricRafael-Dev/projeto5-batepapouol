@@ -1,9 +1,41 @@
-//const name = prompt('Insira seu nome abaixo:')
-
 axios.defaults.headers.common['Authorization'] = 'C4s3KVw3tBWq6LpVfr4sqg07'
+let nome = {name: prompt('Insira seu nome abaixo:')}
+send_name(nome)
+
+function send_name(nome) {
+    const promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nome)
+    promisse.then(reload_messages)
+    promisse.catch(tratar_erro)
+}
+
+function keep_conection() {
+    axios.post('https://mock-api.driven.com.br/api/vm/uol/status', nome)
+}
+
+function tratar_erro(erro){
+    console.log(erro)
+    alert('Algo deu errado! Favor inserir outro nome ou tente novamente mais tarde!')
+    window.location.reload()
+}
 
 
-setInterval(reload_messages, 3000)
+function send_message() {
+    let message = document.querySelector('.text_message').value
+
+    const send_message_here = 
+    {
+        from: `${nome.name}`,
+        to: "Todos",
+        text: `${message}`,
+        type: "message"
+    }
+    console.log(message)
+    document.querySelector('.text_message').value = ''
+    
+    const promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', send_message_here)
+    promisse.then(reload_messages)
+    
+}
 
 
 function appear_participants() {
@@ -71,7 +103,6 @@ function load_messages(load_messages) {
         }
     }
     
-    console.log(message_recived)
 }
 
 function reload_messages() {
@@ -80,3 +111,6 @@ function reload_messages() {
     
 }
 
+
+setInterval(keep_conection, 5000);
+setInterval(reload_messages, 3000)
