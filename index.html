@@ -13,7 +13,52 @@
 </head>
 <body>
 
+    <div class="menu_participants">
+        <div onclick="appear_participants()" class="back"></div>
+        <div class="appear_participants">
+            
+            <div class="participants">
+
+                <p class="choose_title">Escolha um contato
+                    para enviar mensagem:</p>
+
+                <div class="online_participants">
+
+                    <div class="participant_online">
+                        <img src="./Assets/people.svg">
+                        <p>Todos</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="visibility">
+
+                <p class="choose_title">Escolha a visibilidade:</p>
+
+                <div class="choose_visibility">
+
+                    <div class="lock">
+                        <img src="./Assets/lock-open.svg">
+                        <p>Público</p>
+                    </div>
+
+
+                    <div class="unlock">
+                        <img src="./Assets/lock-closed.svg">
+                        <p>Reservadamente</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="page">
+        
+
         <div class="header">
 
             <div class="menu_icons">
@@ -22,7 +67,7 @@
                     <img src="./Assets/logo-batepapouol.svg">
                 </div>
 
-                <div class="logo_participants">
+                <div onclick="appear_participants()" class="logo_participants">
                     <img src="./Assets/people.svg">
                 </div>
 
@@ -30,51 +75,10 @@
             
         </div>
 
-        <div class="all_mensages">
-
-            <div class="format_mensage somebody_enter">
-                <div class="mensage">
-                    <p class="time">(09:21:45)</p>
-                    <p class="name">João</p>entra na sala...
-                </div>
-            </div>
-
-            <div class="format_mensage">
-                <div class="mensage">
-                    <p class="time">(09:22:28)</p>
-                    <p class="name">João</p>
-                    <p class="para">para</p>
-                    <p class="recipient name">Todos:</p>
-                    <p class="text_mensage">Fui ao supermercado fazer umas compras e, chegando lá, lembrei-me de que precisava de uma vassoura nova. Peguei tudo o que queria comprar e fui ao caixa. Quando passei a vassoura, a funcionária perguntou:
-
-                        – Vai levar montada?
-                        
-                        Sem perceber que ela se referia à conexão entre o cabo e a ponta da vassoura, respondi, brincando:
-                        
-                        – Não! Tenho medo de altura, prefiro caminhar!</p> 
-                </div>
-            </div>
-
-            <div class="format_mensage reserve">
-                <div class="mensage">
-                    <p class="time">(09:22:48)</p>
-                    <p class="name">João</p>
-                    <p class="para">reservadamente para</p>
-                    <p class="recipient name">Maria:</p>
-                    <p class="text_mensage">Oi gatinha quer tc?</p> 
-                </div>
-            </div>
-
-            <div class="format_mensage somebody_enter">
-                <div class="mensage">
-                    <p class="time">(09:22:58)</p>
-                    <p class="name">Maria</p>sai da sala...
-                </div>
-            </div>
-
+        <div class="all_menssages">
         </div>
 
-        <div class="send_mensage_menu_bottom">
+        <div class="send_menssage_menu_bottom">
             <div class="elements_bottom_menu">
                 <textarea placeholder="Escreva aqui..."></textarea>
                 <img src="./Assets/paper-plane-outline.svg">
