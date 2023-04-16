@@ -47,6 +47,7 @@ body {
 }
 
 .menssage {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: 15px 20px 15px 15px;
@@ -104,6 +105,7 @@ body {
     width: 95%;
     height: 30px;
     font-size: 18px;
+    box-sizing: border-box;
 }
 .elements_bottom_menu ::placeholder {
     color: black;
@@ -115,6 +117,12 @@ body {
     border-bottom: 1px solid black;
 }
 
+.textarea_and_phase{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+}
+
 .menu_participants {
     display: none;
     width: 100%;
@@ -123,23 +131,39 @@ body {
     z-index: 2;
     position: fixed;
     font-size: 16px;
+    justify-content: space-between;
 }
 
 .appear_participants {
     background-color: #FFFFFF;
-    width: 250%;
+    width: 300px;
+    height: 100%;
     display: flex;
+    position: fixed;
+    right: 0;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+}
+
+.slide-in-right {
+	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.slide-out-right {
+	-webkit-animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 .choose_title{
     font-weight: 700;
     text-align: center;
+    font-size: 16px;
     margin: 40px 47px;
 }
 .back {
     width: 100%;
+    height: 100%;
 }
 .appear {
     display: flex;
@@ -148,6 +172,7 @@ body {
 .online_participants {
     margin-left: 20px;
     margin-right: 20px;
+    overflow-y: scroll;
 }
 
 .participant_online {
@@ -155,9 +180,12 @@ body {
     font-size: 16px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
 }
+
 .menu_participants img {
-    width: 20px;
+    width: 25px;
     margin-right: 10px;
 }
 
@@ -167,4 +195,23 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    justify-content: space-between;
+}
+.all_menu{
+    width: 100%;
+}
+
+.who {
+    display: flex;
+    align-items: center;
+}
+
+.check {
+    display: none;
+}
+.appear_check {
+    display: flex;
+}
+.phase {
+    margin-top: 5px;
 }

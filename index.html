@@ -9,50 +9,70 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./CSS/Animated.css">
+    
     <title>Bate-papo - UOL</title>
 </head>
 <body>
+    <div class="all_menu">
+        <div class="menu_participants slide-in-right">
+            <div onclick="appear_participants()" class="back"></div>
 
-    <div class="menu_participants">
-        <div onclick="appear_participants()" class="back"></div>
-        <div class="appear_participants">
+            <div class="appear_participants slide-out-right">
 
-            <div class="participants">
+                <div class="participants">
 
-                <p class="choose_title">Escolha um contato
-                    para enviar mensagem:</p>
+                    <p class="choose_title">Escolha um contato
+                        para enviar mensagem:</p>
 
-                <div class="online_participants">
+                    <div class="online_participants">
 
-                    <div class="participant_online">
-                        <img src="./Assets/people.svg">
-                        <p>Todos</p>
+                        <div class="participant_online">
+                            <div class="who">
+                                <img src="./Assets/people.svg">
+                                <p>Todos</p>
+                            </div>
+                            <div class="check">
+                                <img src="./Assets/checkmark-outline.svg">
+                            </div>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
 
-            <div class="visibility">
+                <div class="visibility">
 
-                <p class="choose_title">Escolha a visibilidade:</p>
+                    <p class="choose_title">Escolha a visibilidade:</p>
 
-                <div class="choose_visibility">
+                    <div class="choose_visibility">
 
-                    <div class="lock">
-                        <img src="./Assets/lock-open.svg">
-                        <p>Público</p>
+                        <div onclick="set_visibility(this, 'message')" class="unlock">
+                            <div class="who">
+                                <img src="./Assets/lock-open.svg">
+                                <p>Público</p>
+                            </div>
+                            <div class="check appear_check">
+                                <img src="./Assets/checkmark-outline.svg">
+                            </div>
+                        </div>
+
+
+                        <div onclick="set_visibility(this, 'private_message')" class="lock">
+                            <div class="who">
+                                <img src="./Assets/lock-closed.svg">
+                                <p>Reservadamente</p>
+                            </div>
+                            <div class="check">
+                                <img src="./Assets/checkmark-outline.svg">
+                            </div>
+                        </div>
+
                     </div>
-
-
-                    <div class="unlock">
-                        <img src="./Assets/lock-closed.svg">
-                        <p>Reservadamente</p>
-                    </div>
-
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
@@ -80,7 +100,10 @@
 
         <div class="send_menssage_menu_bottom">
             <div class="elements_bottom_menu">
-                <textarea data-test="input-message" onkeypress="press_enter()" class="text_message" placeholder="Escreva aqui..."></textarea>
+                <div class="textarea_and_phase">
+                    <textarea data-test="input-message" onkeypress="press_enter()" class="text_message" placeholder="Escreva aqui..."></textarea>
+                    <p class="phase"></p>
+                </div>
                 <img data-test="send-message" onclick="send_message()" src="./Assets/paper-plane-outline.svg">
             </div>
         </div>

@@ -2,6 +2,9 @@ axios.defaults.headers.common['Authorization'] = 'C4s3KVw3tBWq6LpVfr4sqg07'
 let nome = {name: prompt('Insira seu nome abaixo:')}
 send_name(nome)
 
+let to = "Todos"
+let type = "message"
+
 function send_name(nome) {
     const promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nome)
     promisse.catch(tratar_erro)
@@ -26,11 +29,13 @@ function send_message() {
     const send_message_here = 
     {
         from: `${nome.name}`,
-        to: "Todos",
+        to: `${to}`,
         text: `${message}`,
-        type: "message"
+        type: `${type}`
     }
-    console.log(message)
+
+    console.log(send_message_here)
+
     document.querySelector('.text_message').value = ''
     
     const promisse = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', send_message_here)
@@ -51,7 +56,23 @@ function press_enter() {
 
 function appear_participants() {
     const menu = document.querySelector('.menu_participants')
-    menu.classList.toggle('appear')
+    const appear = document.querySelector('.appear_participants')
+
+    if (document.querySelector('.appear')) {
+        setTimeout(remove_appear, 400, menu)
+
+    } else {
+
+        menu.classList.add('appear')
+
+    }
+
+    appear.classList.toggle('slide-in-right')
+    appear.classList.toggle('slide-out-right')
+}
+
+function remove_appear(menu){
+    menu.classList.remove('appear')
 }
 
 function load_messages(load_messages) {
@@ -75,8 +96,9 @@ function load_messages(load_messages) {
             all_messages.innerHTML +=`
             <div class="format_menssage somebody_enter">
                 <div data-test="message" class="menssage">
-                    <p class="time">${message_recived[i].time}</p>
-                    <p class="name">${message_recived[i].from}</p>${message_recived[i].text}
+                    <p class="time">(${message_recived[i].time})</p>
+                    <p class="name">${message_recived[i].from}</p>
+                    ${message_recived[i].text}
                 </div>
             </div>
             `
@@ -87,7 +109,7 @@ function load_messages(load_messages) {
             all_messages.innerHTML += `
             <div class="format_menssage">
                 <div data-test="message" class="menssage">
-                    <span class="time">${message_recived[i].time}</span>
+                    <span class="time">(${message_recived[i].time})</span>
                     <span class="name">${message_recived[i].from}</span>
                     <span class="para">para</span>
                     <span class="recipient name">${message_recived[i].to}:</span>
@@ -102,7 +124,7 @@ function load_messages(load_messages) {
             all_messages.innerHTML += `
             <div class="format_menssage reserve">
                 <div data-test="message" class="menssage">
-                    <p class="time">${message_recived[i].time}</p>
+                    <p class="time">(${message_recived[i].time})</p>
                     <p class="name">${message_recived[i].from}</p>
                     <p class="para">reservadamente para</p>
                     <p class="recipient name">${message_recived[i].to}:</p>
@@ -114,6 +136,7 @@ function load_messages(load_messages) {
         }
     }
     
+    all_messages.lastElementChild.scrollIntoView()
 }
 
 function reload_messages() {
@@ -122,6 +145,187 @@ function reload_messages() {
     
 }
 
+function print_participants_on_screen(participants) {
+    
+    const online_participants = document.querySelector('.online_participants')
+    console.log(to)
+    const check = document.querySelector('.online_participants .appear_check')
 
+    let user_quit;
+
+    for (let i = 0; i < participants.data.length; i++) {
+        if (to == participants.data[i].name){
+            user_quit = false
+            break
+        } else {
+            user_quit = true
+        }
+    }
+
+    if (user_quit === true){
+        to = "Todos"
+    }
+
+    if (check && to != 'Todos') {
+        online_participants.innerHTML = `
+        <div onclick="set_to(this,'Todos')" class="participant_online">
+            <div class="who">
+                <img src="./Assets/people.svg">
+                <p>Todos</p>
+            </div>
+            <div class="check">
+                <img src="./Assets/checkmark-outline.svg">
+            </div>
+        </div>
+        `
+    } else {
+        online_participants.innerHTML = `
+        <div onclick="set_to(this,'Todos')" class="participant_online">
+            <div class="who">
+                <img src="./Assets/people.svg">
+                <p>Todos</p>
+            </div>
+            <div class="check appear_check">
+                <img src="./Assets/checkmark-outline.svg">
+            </div>
+        </div>
+        `
+    }
+
+
+    for (let i = 0; i < participants.data.length; i++) {
+        if (participants.data[i].name == to) {
+            online_participants.innerHTML += `
+            <div onclick="set_to(this, '${to}')" class="participant_online">
+                <div class="who">
+                    <img src="./Assets/person-circle.svg">
+                    <p>${to}</p>
+                </div>
+                <div class="check appear_check">
+                    <img src="./Assets/checkmark-outline.svg">
+                </div>
+            </div>
+            `
+        } else {
+            online_participants.innerHTML += `
+            <div onclick="set_to(this, '${participants.data[i].name}')" class="participant_online">
+                <div class="who">
+                    <img src="./Assets/person-circle.svg">
+                    <p>${participants.data[i].name}</p>
+                </div>
+                <div class="check">
+                    <img src="./Assets/checkmark-outline.svg">
+                </div>
+            </div>
+            `
+        }
+    }
+
+}
+
+function search_participants() {
+    const participants = axios.get('https://mock-api.driven.com.br/api/vm/uol/participants')
+    participants.then(print_participants_on_screen)
+}
+
+
+function set_to(buttom, who) {
+    to = who
+    console.log(buttom)
+    //verificar onde está o 'check' marcado
+    const check = document.querySelector('.online_participants .appear_check')
+    const buttom_check = buttom.querySelector('.check')
+
+    if (check) {
+        //retirar da posiçao marcada
+        check.classList.remove('appear_check')
+
+        //colocar o 'check' no botao atual
+        buttom_check.classList.add('appear_check')
+    } else {
+        buttom_check.classList.add('appear_check')
+    }
+    
+    if (to == 'Todos') {
+        type = 'message'
+
+        document.querySelector('.unlock .check').classList.add('appear_check')
+        document.querySelector('.lock .check').classList.remove('appear_check')
+
+    }
+
+
+    const phase = document.querySelector('.phase')
+    
+    if(to == 'Todos'){
+        phase.innerText = ''
+
+    } else {
+
+        if (type == 'private_message'){
+            phase.innerText = `Enviando para ${to} (Reservadamente)`
+
+        } else {
+            phase.innerText = `Enviando para ${to} (Público)`
+
+        }
+        
+    }
+    
+}
+
+function set_visibility(buttom, visibility) {
+    type = visibility
+
+    if (to == 'Todos') {
+        type = 'message'
+
+        document.querySelector('.unlock .check').classList.add('appear_check')
+        document.querySelector('.lock .check').classList.remove('appear_check')
+
+    } else {
+        //verificar onde está o 'check' marcado
+        const check = document.querySelector('.choose_visibility .appear_check')
+        const buttom_check = buttom.querySelector('.check')
+
+        if (check) {
+            //retirar da posiçao marcada
+            check.classList.remove('appear_check')
+
+            //colocar o 'check' no botao atual
+            buttom_check.classList.add('appear_check')
+        } else {
+            buttom_check.classList.add('appear_check')
+        }
+
+
+        const phase = document.querySelector('.phase')
+        
+        if(to == 'Todos'){
+            phase.innerText = ''
+            
+        } else {
+
+            if (type == 'private_message'){
+                phase.innerText = `Enviando para ${to} (Reservadamente)`
+
+            } else {
+                phase.innerText = `Enviando para ${to} (Público)`
+
+            }
+            
+        }
+    }
+
+    
+}
+
+
+
+
+
+
+search_participants()
 setInterval(keep_conection, 5000);
+setInterval(search_participants, 10000)
 setInterval(reload_messages, 3000)
