@@ -15,6 +15,31 @@
     <title>Bate-papo - UOL</title>
 </head>
 <body>
+
+    <div class="page_login">
+        <div class="contents_page">
+
+            <div class="logo_img">
+                <img src="./Assets/logo-batepapouol.svg">
+            </div>
+
+            <div class="input_name">
+                <div><input onkeypress="press_enter('input')" class="input" placeholder="Digite seu nome..." type="text"></div>
+                <div class="enter_input interaction"><button onclick="send_name()">Entrar</button></div>
+            </div>
+
+            <div class="load">
+                <img class="loading" src="./Assets/39979.png">
+                <p>Entrando...</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
     <div class="all_menu">
         <div class="menu_participants slide-in-right">
             <div onclick="appear_participants()" class="back"></div>
@@ -28,16 +53,6 @@
 
                     <div class="online_participants">
 
-                        <div class="participant_online">
-                            <div class="who">
-                                <img src="./Assets/people.svg">
-                                <p>Todos</p>
-                            </div>
-                            <div class="check">
-                                <img src="./Assets/checkmark-outline.svg">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -47,25 +62,27 @@
                     <p class="choose_title">Escolha a visibilidade:</p>
 
                     <div class="choose_visibility">
-
-                        <div onclick="set_visibility(this, 'message')" class="unlock">
-                            <div class="who">
-                                <img src="./Assets/lock-open.svg">
-                                <p>Público</p>
-                            </div>
-                            <div class="check appear_check">
-                                <img src="./Assets/checkmark-outline.svg">
+                        <div class="select">
+                            <div onclick="set_visibility(this, 'message')" class="unlock">
+                                <div class="who">
+                                    <img src="./Assets/lock-open.svg">
+                                    <p>Público</p>
+                                </div>
+                                <div class="check appear_check">
+                                    <img src="./Assets/checkmark-outline.svg">
+                                </div>
                             </div>
                         </div>
 
-
-                        <div onclick="set_visibility(this, 'private_message')" class="lock">
-                            <div class="who">
-                                <img src="./Assets/lock-closed.svg">
-                                <p>Reservadamente</p>
-                            </div>
-                            <div class="check">
-                                <img src="./Assets/checkmark-outline.svg">
+                        <div class="select">
+                            <div onclick="set_visibility(this, 'private_message')" class="lock">
+                                <div class="who">
+                                    <img src="./Assets/lock-closed.svg">
+                                    <p>Reservadamente</p>
+                                </div>
+                                <div class="check">
+                                    <img src="./Assets/checkmark-outline.svg">
+                                </div>
                             </div>
                         </div>
 
@@ -87,7 +104,7 @@
                     <img src="./Assets/logo-batepapouol.svg">
                 </div>
 
-                <div onclick="appear_participants()" class="logo_participants">
+                <div onclick="appear_participants()" class="logo_participants interaction">
                     <img src="./Assets/people.svg">
                 </div>
 
@@ -101,10 +118,12 @@
         <div class="send_menssage_menu_bottom">
             <div class="elements_bottom_menu">
                 <div class="textarea_and_phase">
-                    <textarea data-test="input-message" onkeypress="press_enter()" class="text_message" placeholder="Escreva aqui..."></textarea>
+                    <textarea data-test="input-message" onkeypress="press_enter('textarea')" class="text_message interaction" placeholder="Escreva aqui..."></textarea>
                     <p class="phase"></p>
                 </div>
-                <img data-test="send-message" onclick="send_message()" src="./Assets/paper-plane-outline.svg">
+                <div class="interaction">
+                    <img class="interaction" data-test="send-message" onclick="send_message()" src="./Assets/paper-plane-outline.svg">
+                </div>
             </div>
         </div>
 

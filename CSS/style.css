@@ -6,6 +6,92 @@ body {
     position: relative;
 }
 
+
+.page_login {
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+}
+
+.logo_img, .input_name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.input_name {
+    margin-bottom: 70px;
+
+}
+
+.enter_input {
+    margin-top: 20px;
+}
+
+.page_login img {
+    width: 130px;
+}
+
+input{
+    width: 260px;
+    height: 55px;
+    border-radius: 4px;
+    border: 1px solid #D7D7D7;
+    color: #AEAEAE;
+    display: flex;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+}
+
+
+.enter_input button {
+    width: 110px;
+    height: 45px;
+    border-radius: 9px;
+    background-color: #E7E7E7;
+    color: #696969;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+
+}
+
+.contents_page {
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.loading {
+    margin-bottom: 25px;
+
+	-webkit-animation: rotate-center 2s linear infinite both;
+	        animation: rotate-center 2s linear infinite both;
+}
+
+.slide-out-top {
+	-webkit-animation: slide-out-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: slide-out-top 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.load {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
 .header {
     height: 80px;
     width: 100%;
@@ -172,7 +258,7 @@ body {
 .online_participants {
     margin-left: 20px;
     margin-right: 20px;
-    overflow-y: scroll;
+
 }
 
 .participant_online {
@@ -181,7 +267,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 8px;
+}
+
+.select {
+    border: 0.5px solid #FFFFFF;
+}
+.select :hover {
+    cursor: pointer;
+    background-color: #D7D7D7;
+    border-radius: 10px;
 }
 
 .menu_participants img {
@@ -189,16 +283,21 @@ body {
     margin-right: 10px;
 }
 
+.who{
+    height: 33px;
+    margin-left: 10px;
+}
 .lock, .unlock {
     color: black;
     font-size: 16px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     justify-content: space-between;
 }
 .all_menu{
     width: 100%;
+    overflow-y: scroll;
 }
 
 .who {
@@ -214,4 +313,8 @@ body {
 }
 .phase {
     margin-top: 5px;
+}
+
+.interaction :hover{
+    cursor: pointer;
 }
