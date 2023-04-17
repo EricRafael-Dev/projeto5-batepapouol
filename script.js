@@ -16,10 +16,7 @@ function send_name() {
     document.querySelector('.input_name').style.display = 'none'
     document.querySelector('.load').style.display = 'flex'
 
-    search_participants()
-    setInterval(keep_conection, 5000);
-    setInterval(search_participants, 10000)
-    setInterval(reload_messages, 3000)
+    
 }
 
 function keep_conection() {
@@ -166,7 +163,10 @@ function load_messages(load_messages) {
         }
     }
     
-    
+    search_participants()
+    setInterval(keep_conection, 5000);
+    setInterval(search_participants, 10000)
+    setInterval(reload_messages, 3000)
     setTimeout(transition_remove_pageLogin, 5000)
 }
 
