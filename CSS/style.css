@@ -136,6 +136,7 @@ input{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    word-wrap: break-word;
     margin: 15px 20px 15px 15px;
     
 }
