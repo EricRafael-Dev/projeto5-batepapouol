@@ -141,7 +141,6 @@ input{
 }
 
 .text_menssage {
-    background-color: aqua;
     max-width: 95%;
     word-wrap: break-word;
 }
