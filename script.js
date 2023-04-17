@@ -203,13 +203,13 @@ function print_participants_on_screen(participants) {
     if (check && to != 'Todos') {
         online_participants.innerHTML = `
         <div class="select">
-            <div onclick="set_to(this,'Todos')" class="participant_online">
+            <div data-test="all" onclick="set_to(this,'Todos')" class="participant_online">
                 <div class="who">
                     <img src="./Assets/people.svg">
                     <p>Todos</p>
                 </div>
                 <div class="check">
-                    <img src="./Assets/checkmark-outline.svg">
+                    <img data-test="check" src="./Assets/checkmark-outline.svg">
                 </div>
             </div>
         </div>
@@ -217,13 +217,13 @@ function print_participants_on_screen(participants) {
     } else {
         online_participants.innerHTML = `
         <div class="select">
-            <div onclick="set_to(this,'Todos')" class="participant_online hover_sla">
+            <div data-test="all" onclick="set_to(this,'Todos')" class="participant_online hover_sla">
                 <div class="who">
                     <img src="./Assets/people.svg">
                     <p>Todos</p>
                 </div>
                 <div class="check appear_check">
-                    <img src="./Assets/checkmark-outline.svg">
+                    <img data-test="check" src="./Assets/checkmark-outline.svg">
                 </div>
             </div>
         </div>
@@ -235,13 +235,13 @@ function print_participants_on_screen(participants) {
         if (participants.data[i].name == to) {
             online_participants.innerHTML += `
             <div class="select">
-                <div onclick="set_to(this, '${to}')" class="participant_online">
+                <div data-test="participant" onclick="set_to(this, '${to}')" class="participant_online">
                     <div class="who">
                         <img src="./Assets/person-circle.svg">
                         <p>${to}</p>
                     </div>
                     <div class="check appear_check">
-                        <img src="./Assets/checkmark-outline.svg">
+                        <img data-test="check" src="./Assets/checkmark-outline.svg">
                     </div>
                 </div>
             </div>
@@ -249,13 +249,13 @@ function print_participants_on_screen(participants) {
         } else {
             online_participants.innerHTML += `
             <div class="select">
-                <div onclick="set_to(this, '${participants.data[i].name}')" class="participant_online">
+                <div data-test="participant" onclick="set_to(this, '${participants.data[i].name}')" class="participant_online">
                     <div class="who">
                         <img src="./Assets/person-circle.svg">
                         <p>${participants.data[i].name}</p>
                     </div>
                     <div class="check">
-                        <img src="./Assets/checkmark-outline.svg">
+                        <img data-test="check" src="./Assets/checkmark-outline.svg">
                     </div>
                 </div>
             </div>

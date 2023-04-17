@@ -24,8 +24,8 @@
             </div>
 
             <div class="input_name">
-                <div><input onkeypress="press_enter('input')" class="input" placeholder="Digite seu nome..." type="text"></div>
-                <div class="enter_input interaction"><button onclick="send_name()">Entrar</button></div>
+                <div><input data-test="input-name" onkeypress="press_enter('input')" class="input" placeholder="Digite seu nome..." type="text"></div>
+                <div class="enter_input interaction"><button data-test="send-name" onclick="send_name()">Entrar</button></div>
             </div>
 
             <div class="load">
@@ -42,7 +42,7 @@
 
     <div class="all_menu">
         <div class="menu_participants slide-in-right">
-            <div onclick="appear_participants()" class="back"></div>
+            <div data-test="overlay" onclick="appear_participants()" class="back"></div>
 
             <div class="appear_participants slide-out-right">
 
@@ -63,25 +63,25 @@
 
                     <div class="choose_visibility">
                         <div class="select">
-                            <div onclick="set_visibility(this, 'message')" class="unlock">
+                            <div data-test="public" onclick="set_visibility(this, 'message')" class="unlock">
                                 <div class="who">
                                     <img src="./Assets/lock-open.svg">
                                     <p>Público</p>
                                 </div>
                                 <div class="check appear_check">
-                                    <img src="./Assets/checkmark-outline.svg">
+                                    <img data-test="check" src="./Assets/checkmark-outline.svg">
                                 </div>
                             </div>
                         </div>
 
                         <div class="select">
-                            <div onclick="set_visibility(this, 'private_message')" class="lock">
+                            <div data-test="private" onclick="set_visibility(this, 'private_message')" class="lock">
                                 <div class="who">
                                     <img src="./Assets/lock-closed.svg">
                                     <p>Reservadamente</p>
                                 </div>
                                 <div class="check">
-                                    <img src="./Assets/checkmark-outline.svg">
+                                    <img data-test="check" src="./Assets/checkmark-outline.svg">
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                     <img src="./Assets/logo-batepapouol.svg">
                 </div>
 
-                <div onclick="appear_participants()" class="logo_participants interaction">
+                <div data-test="open-participants" onclick="appear_participants()" class="logo_participants interaction">
                     <img src="./Assets/people.svg">
                 </div>
 
@@ -119,7 +119,7 @@
             <div class="elements_bottom_menu">
                 <div class="textarea_and_phase">
                     <textarea data-test="input-message" onkeypress="press_enter('textarea')" class="text_message interaction" placeholder="Escreva aqui..."></textarea>
-                    <p class="phase"></p>
+                    <p data-test="recipient" class="phase"></p>
                 </div>
                 <div class="interaction">
                     <img class="interaction" data-test="send-message" onclick="send_message()" src="./Assets/paper-plane-outline.svg">
