@@ -99,7 +99,9 @@ function remove_pageLogin() {
 
 function load_messages(load_messages) {
 
-    
+    search_participants()
+    setInterval(keep_conection, 5000);
+    setInterval(search_participants, 10000)
 
     //armazenar as mensagens em um array
     const message_recived = load_messages.data
@@ -163,9 +165,7 @@ function load_messages(load_messages) {
         }
     }
     
-    search_participants()
-    setInterval(keep_conection, 5000);
-    setInterval(search_participants, 10000)
+    
     setInterval(reload_messages, 3000)
     setTimeout(transition_remove_pageLogin, 5000)
 }
