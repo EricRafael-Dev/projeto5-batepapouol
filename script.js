@@ -100,8 +100,7 @@ function remove_pageLogin() {
 function load_messages(load_messages) {
 
     search_participants()
-    setInterval(keep_conection, 5000);
-    setInterval(search_participants, 10000)
+    
 
     //armazenar as mensagens em um array
     const message_recived = load_messages.data
@@ -139,7 +138,7 @@ function load_messages(load_messages) {
                     <span class="name">${message_recived[i].from}</span>
                     <span class="para">para</span>
                     <span class="recipient name">${message_recived[i].to}:</span>
-                    <p class="text_menssage">${message_recived[i].text}</p>
+                    <span class="text_menssage">${message_recived[i].text}</span>
                 </div>
             </div>
             `
@@ -155,7 +154,7 @@ function load_messages(load_messages) {
                         <p class="name">${message_recived[i].from}</p>
                         <p class="para">reservadamente para</p>
                         <p class="recipient name">${message_recived[i].to}:</p>
-                        <p class="text_menssage">${message_recived[i].text} </p> 
+                        <span class="text_menssage">${message_recived[i].text} </span> 
                     </div>
                 </div>
                 `
@@ -165,9 +164,11 @@ function load_messages(load_messages) {
         }
     }
     
-    
-    setInterval(reload_messages, 3000)
     setTimeout(transition_remove_pageLogin, 5000)
+    setInterval(keep_conection, 5000);
+    setInterval(search_participants, 10000)
+    setInterval(reload_messages, 3000)
+    
 }
 
 function reload_messages() {
